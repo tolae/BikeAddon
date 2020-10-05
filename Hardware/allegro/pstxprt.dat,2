@@ -1,0 +1,70 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 17.2.0 d001Oct-05-2020 at 01:02:27 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='BIKE_ADDONS';
+ POST_TIME='Apr 26 2020 05:36:08';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ C1 'CAP NP_G-033_MUR_56PF':;
+
+SECTION_NUMBER 1
+ '@BIKE_ADDONS.GPS(SCH_1):INS331@DISCRETE.CAP NP.NORMAL(CHIPS)':
+ C_PATH='@bike_addons.gps(sch_1):ins331@discrete.\cap np.normal\(chips)',
+ P_PATH='@bike_addons.gps(sch_1):page1_ins331@discrete.\cap np.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C2 'CAP NP_G-033_MUR_10NF':;
+
+SECTION_NUMBER 1
+ '@BIKE_ADDONS.GPS(SCH_1):INS359@DISCRETE.CAP NP.NORMAL(CHIPS)':
+ C_PATH='@bike_addons.gps(sch_1):ins359@discrete.\cap np.normal\(chips)',
+ P_PATH='@bike_addons.gps(sch_1):page1_ins359@discrete.\cap np.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C3 'CAP NP_G-033_MUR_56PF':;
+
+SECTION_NUMBER 1
+ '@BIKE_ADDONS.GPS(SCH_1):INS505@DISCRETE.CAP NP.NORMAL(CHIPS)':
+ C_PATH='@bike_addons.gps(sch_1):ins505@discrete.\cap np.normal\(chips)',
+ P_PATH='@bike_addons.gps(sch_1):page1_ins505@discrete.\cap np.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ JP1 'GPS_BREAKOUT_GPS_BREAKOUT_GPS_B':;
+
+SECTION_NUMBER 1
+ '@BIKE_ADDONS.GPS(SCH_1):INS1873@CUSTOM.GPS_BREAKOUT.NORMAL(CHIPS)':
+ C_PATH='@bike_addons.gps(sch_1):ins1873@custom.\gps_breakout.normal\(chips)',
+ P_PATH='@bike_addons.gps(sch_1):page1_ins1873@custom.\gps_breakout.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ L1 'INDUCTOR_0402-IND_27NH':;
+
+SECTION_NUMBER 1
+ '@BIKE_ADDONS.GPS(SCH_1):INS282@DISCRETE.INDUCTOR.NORMAL(CHIPS)':
+ C_PATH='@bike_addons.gps(sch_1):ins282@discrete.\inductor.normal\(chips)',
+ P_PATH='@bike_addons.gps(sch_1):page1_ins282@discrete.\inductor.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U1 'TESEO-LIV3F_LCC18_9P7X10P1_STM_':;
+
+SECTION_NUMBER 1
+ '@BIKE_ADDONS.GPS(SCH_1):INS58@TESEO_LIV3R.TESEO-LIV3F.NORMAL(SCH_1)':
+ C_PATH='@bike_addons.gps(sch_1):ins58@teseo_liv3r.\teseo-liv3f.normal\(sch_1)',
+ P_PATH='@bike_addons.gps(sch_1):page1_ins58@teseo_liv3r.\teseo-liv3f.normal\(sch_1)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.

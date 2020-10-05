@@ -1,0 +1,76 @@
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   1  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Mon Oct 05 01:05:19 2020  |
+|------------------------------------------------------------------------------|
+| NET CHANGES                                                                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   net  name |  type of change |    pin_id     |   x   |   y   |   to  net    |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+  1PPS         pins MOVED FROM this net (to net name listed on right)
+                                 JP1.4                          
+                                                                        WAKE_UP
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N00219       pins MOVED FROM this net (to net name listed on right)
+                                 U1.9            275.202 235.006
+                                                                       SYS_RSTN
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  SYS_RSTN     pins ADDED TO this new net
+                                 JP1.3                          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  UART_RX      pins MOVED FROM this net (to net name listed on right)
+                                 JP1.5                          
+                                                                           1PPS
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  UART_TX      pins MOVED FROM this net (to net name listed on right)
+                                 JP1.6                          
+                                                                        UART_RX
+                - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+               pins ADDED TO this existing net (pins not previously on any net)
+                                 JP1.7                          
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   2  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Mon Oct 05 01:05:19 2020  |
+|------------------------------------------------------------------------------|
+| COMPONENT DEFINITION added to design                                         |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    device type                                                               |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ GPS_BREAKOUT_GPS_BREAKOUT_GPS_B
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   3  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Mon Oct 05 01:05:19 2020  |
+|------------------------------------------------------------------------------|
+| COMPONENTS CHANGED from one device type to another in design                 |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    ref des        | new device type     |   x   |   y   |  old  device type  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ JP1                 GPS_BREAKOUT_GPS_BREAKOUT_GPS_B 288.823 230.682 GPS_BREAKOUT_GPS_BREAKOUT_GPS_B
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   4  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Mon Oct 05 01:05:19 2020  |
+|------------------------------------------------------------------------------|
+| SLOT PROPERTIES added to design                                              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   slot_id    |   x   |   y   |   property   |             value              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ JP1.4                          PRIM_FILE      .\pstchip.dat
+|------------------------------------------------------------------------------|
+|       Nets changed          :       6                                        |
+|       Comp definitions added:       1                                        |
+|       Components changed    :       1                                        |
+|       Slot property added   :       1                                        |
+|                                                                              |
+|   Total ECO changes reported:       9                                        |
+|------------------------------------------------------------------------------|

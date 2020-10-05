@@ -1,0 +1,23 @@
+\t (00:00:02) allegro 17.2 S067 Windows SPB 64-bit Edition
+\t (00:00:02)     Journal start - Mon Oct 05 01:02:50 2020
+\t (00:00:02)         Host=DESKTOP-JV3CNMF User=Ethan Pid=21324 CPUs=16
+\t (00:00:02) CmdLine= C:\Cadence\SPB_17.2\tools\bin\allegro.exe
+\t (00:00:02) 
+   (00:00:02) Loading axlcore.cxt 
+\t (00:00:04) Opening existing design...
+\i (00:00:04) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged gps_breakout
+\d (00:00:04) Design opened: C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd
+\i (00:00:04) trapsize 1499
+\i (00:00:04) trapsize 1542
+\i (00:00:04) trapsize 1499
+\i (00:00:04) trapsize 1499
+\i (00:00:05) generaledit 
+\i (00:00:07) open 
+\i (00:00:21) fillin "C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom/gps_breakout.dra"
+\i (00:00:21) cd "C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom"
+\t (00:00:21) Opening existing design...
+\i (00:00:21) trapsize 98
+\i (00:00:21) trapsize 101
+\i (00:00:21) trapsize 98
+\i (00:00:21) trapsize 101
+\t (00:00:21)     Journal end - Mon Oct 05 01:03:10 2020
