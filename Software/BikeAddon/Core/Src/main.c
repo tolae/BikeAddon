@@ -27,7 +27,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "common.h"
+#include "hall_effect.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +48,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+hall_effect_sensor_t frnt_wheel;
+hall_effect_sensor_t back_wheel;
+hall_effect_sensor_t pedal_gear;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -68,7 +71,9 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	frnt_wheel.id = bit_position_to_int(TIM_CHANNEL_1);
+	back_wheel.id = bit_position_to_int(TIM_CHANNEL_3);
+	pedal_gear.id = bit_position_to_int(TIM_CHANNEL_4);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -77,7 +82,9 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  configure_hall_effect(&frnt_wheel);
+  configure_hall_effect(&back_wheel);
+  configure_hall_effect(&pedal_gear);
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -95,13 +102,27 @@ int main(void)
   MX_UART4_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-
+//  HAL_TIM_IC_Start_DMA(&htim3, 1 << frnt_wheel.id, frnt_wheel.buffer, frnt_wheel.buf_len);
+//  HAL_TIM_IC_Start_DMA(&htim3, 1 << back_wheel.id, back_wheel.buffer, back_wheel.buf_len);
+//  HAL_TIM_IC_Start_DMA(&htim3, 1 << pedal_gear.id, pedal_gear.buffer, pedal_gear.buf_len);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  /* Calculate current speed via hall effect sensors */
+	  	  /* speed = distance_between_mags / time */
+	  /* Calculate acceleration speed via hall effect sensors */
+	  	  /* acce = (speed_now - speed_before) / time */
+	  /* Read position via GPS */
+	  /* Read speed via GPS */
+	  /* Calculate acce via GPS */
+	  	  /* acce = (speed_now - speed_before) / time */
+	  /* Read linear acceleration via IMU */
+	  /* Compute dynamic tilt angle via IMU */
+	  	  /* This requires hefty math */
+	  /* Output data via USART2 */
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
