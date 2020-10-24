@@ -1,4 +1,5 @@
 #include "hall_effect.h"
+#include "common.h"
 
 enum Callback_Type
 {
@@ -50,10 +51,10 @@ void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type)
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
-	hall_effect_callback(htim->Channel /* TODO: bit_position(htim->Channel) */, FULL);
+	hall_effect_callback(bit_position(htim->Channel), FULL);
 }
 
 void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim)
 {
-	hall_effect_callback(htim->Channel /* TODO: bit_position(htim->Channel) */, HALF);
+	hall_effect_callback(bit_position(htim->Channel), HALF);
 }
