@@ -13,15 +13,7 @@ void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type);
 
 void configure_hall_effect(hall_effect_sensor_t* sensor)
 {
-	int i;
-	for (i = 0; i < MAX_NUMBER_OF_SENSORS; i++)
-	{
-		if (configured_h_effect_sensors[i] == NULL)
-		{
-			configured_h_effect_sensors[i] = sensor;
-			sensor->id = i;
-		}
-	}
+	configured_h_effect_sensors[sensor->id] = sensor;
 }
 
 void remove_hall_effect(hall_effect_sensor_t* sensor)
@@ -31,7 +23,6 @@ void remove_hall_effect(hall_effect_sensor_t* sensor)
 
 void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type)
 {
-	int diff;
 	hall_effect_sensor_t* sensor = configured_h_effect_sensors[sensor_id];
 	if (sensor != NULL)
 	{
@@ -39,22 +30,21 @@ void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type)
 		switch(callback_type)
 		{
 		case FULL:
-			diff = sensor->buffer[3] - sensor->buffer[2];
+			sensor->diff = sensor->buffer[3] - sensor->buffer[2];
 			break;
 		case HALF:
-			diff = sensor->buffer[1] - sensor->buffer[0];
+			sensor->diff = sensor->buffer[1] - sensor->buffer[0];
 			break;
 		}
-		/* TODO: Update speed */
 	}
 }
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
-	hall_effect_callback(bit_position(htim->Channel), FULL);
+	hall_effect_callback(bit_position_to_int(htim->Channel), FULL);
 }
 
 void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim)
 {
-	hall_effect_callback(bit_position(htim->Channel), HALF);
+	hall_effect_callback(bit_position_to_int(htim->Channel), HALF);
 }

@@ -1,6 +1,6 @@
 #include "common.h"
 
-unsigned int bit_position(unsigned int num)
+unsigned int bit_position_to_int(unsigned int num)
 {
 	int i = 1;
 	int pos = 1;

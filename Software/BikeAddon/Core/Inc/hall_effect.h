@@ -18,6 +18,8 @@ typedef struct hall_effect_sensor
 	uint32_t buffer[HALL_EFFECT_SENSOR_BUFFER_MAX];
 	/* The buffer length */
 	uint16_t buf_len;
+	/* The difference between two consecutive reads */
+	uint32_t diff;
 } hall_effect_sensor_t;
 
 void configure_hall_effect(hall_effect_sensor_t* sensor);
