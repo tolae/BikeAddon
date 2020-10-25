@@ -1,0 +1,31 @@
+\t (00:00:02) allegro 17.2 S067 Windows SPB 64-bit Edition
+\t (00:00:02)     Journal start - Mon Oct 05 00:10:45 2020
+\t (00:00:02)         Host=DESKTOP-JV3CNMF User=Ethan Pid=18072 CPUs=16
+\t (00:00:02) CmdLine= C:\Cadence\SPB_17.2\tools\bin\allegro.exe
+\t (00:00:02) 
+   (00:00:02) Loading axlcore.cxt 
+\t (00:00:03) Starting new design...
+\i (00:00:04) trapsize 29310
+\i (00:00:04) generaledit 
+\i (00:00:17) trapsize 908
+\i (00:00:17) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged unnamed
+\i (00:00:21) done 
+\i (00:00:21) place manual 
+\i (00:00:21) FORM plc_manual placement_list 
+\i (00:00:21) FORM plc_manual categories Components by refdes 
+\i (00:00:21) trapsize 908
+\i (00:00:23) setwindow form.plc_manual
+\i (00:00:23) FORM plc_manual advanced_settings  
+\i (00:00:24) FORM plc_manual library YES 
+\i (00:00:25) FORM plc_manual placement_list  
+\i (00:00:28) FORM plc_manual categories Package symbols 
+\i (00:00:41) FORM plc_manual alpha_filter *0201* 
+\i (00:00:51) FORM plc_manual alpha_filter *0402* 
+\i (00:00:57) FORM plc_manual alpha_filter *CAP* 
+\i (00:05:35) FORM plc_manual cancel  
+\i (00:05:35) setwindow pcb
+\i (00:05:35) generaledit 
+\i (00:05:37) exit 
+\e (00:05:37) Do you want to save the changes you made to unnamed.brd?
+\i (00:05:38) fillin no 
+\t (00:05:39)     Journal end - Mon Oct 05 00:16:22 2020

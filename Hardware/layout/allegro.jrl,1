@@ -1,0 +1,118 @@
+\t (00:01:08) allegro 17.2 S071 Windows SPB 64-bit Edition
+\t (00:01:08)     Journal start - Thu Oct 22 15:02:06 2020
+\t (00:01:08)         Host=DESKTOP-JV3CNMF User=Ethan Pid=6384 CPUs=16
+\t (00:01:08) CmdLine= c:\cadence\spb_17.2\tools\bin\allegro.exe C:\Users\Ethan\Downloads\ul_GRM0335C1H1R0CA01D\AllegroV17_2\G-033_MUR.dra
+\t (00:01:08) 
+\d (00:01:08) Design opened: C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/layout/imu_breakout.brd
+\i (00:01:08) generaledit 
+\i (00:01:11) color192 
+\i (00:01:11) generaledit 
+\i (00:01:13) QtSignal CVDLayerContainer CVDVisibilityOn clicked
+\i (00:01:16) color192 
+\i (00:01:16) generaledit 
+\i (00:01:17) QtSignal CVDLayerContainer CVDVisibilityOn clicked
+\i (00:01:18) QtSignal ColorVisibilityDialog CVDOkButton clicked
+\i (00:01:19) zoom in 1 
+\i (00:01:19) setwindow pcb
+\i (00:01:19) zoom in 7.8094 3.3834
+\i (00:01:19) trapsize 748
+\i (00:01:20) zoom in 1 
+\i (00:01:20) setwindow pcb
+\i (00:01:20) zoom in 7.7795 3.4283
+\i (00:01:20) trapsize 374
+\i (00:01:21) zoom in 1 
+\i (00:01:21) setwindow pcb
+\i (00:01:21) zoom in 7.9591 3.5405
+\i (00:01:21) trapsize 187
+\i (00:01:21) zoom in 1 
+\i (00:01:21) setwindow pcb
+\i (00:01:21) zoom in 7.9591 3.5405
+\i (00:01:21) trapsize 93
+\i (00:01:24) zoom out 1 
+\i (00:01:24) setwindow pcb
+\i (00:01:24) zoom out 8.1760 3.4302
+\i (00:01:24) trapsize 187
+\i (00:01:24) zoom out 1 
+\i (00:01:24) setwindow pcb
+\i (00:01:24) zoom out 8.1760 3.4302
+\i (00:01:24) trapsize 374
+\i (00:01:24) zoom out 1 
+\i (00:01:24) setwindow pcb
+\i (00:01:24) zoom out 8.1761 3.4301
+\i (00:01:24) trapsize 748
+\i (00:01:25) zoom out 1 
+\i (00:01:25) setwindow pcb
+\i (00:01:25) zoom out 8.1761 3.4302
+\i (00:01:25) trapsize 1496
+\i (00:03:06) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged "Start Page"
+\i (00:03:07) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged imu_breakout
+\i (00:03:07) opencd C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd 
+\e (00:03:07) Do you want to save the changes you made to imu_breakout.brd?
+\i (00:03:09) fillin no 
+\t (00:03:09) Opening existing design...
+\i (00:03:09) trapsize 2883
+\d (00:03:09) Design opened: C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd
+\i (00:03:09) generaledit 
+\i (00:03:11) color192 
+\i (00:03:11) generaledit 
+\i (00:03:13) QtSignal CVDLayerContainer CVDVisibilityOn clicked
+\i (00:03:14) QtSignal ColorVisibilityDialog CVDOkButton clicked
+\i (00:03:14) roam start
+\i (00:03:14) roam x 16
+\i (00:03:14) roam x 32
+\i (00:03:14) roam x 32
+\i (00:03:14) roam x 64
+\i (00:03:14) roam x 48
+\i (00:03:14) roam x 64
+\i (00:03:14) roam x 80
+\i (00:03:14) roam x 32
+\i (00:03:14) roam x 16
+\i (00:03:15) roam end
+\i (00:03:16) zoom in 1 
+\i (00:03:16) setwindow pcb
+\i (00:03:16) zoom in 15.6199 13.8041
+\i (00:03:16) trapsize 1442
+\i (00:03:16) zoom in 1 
+\i (00:03:16) setwindow pcb
+\i (00:03:16) zoom in 15.6199 13.8041
+\i (00:03:16) trapsize 721
+\i (00:03:17) zoom out 1 
+\i (00:03:17) setwindow pcb
+\i (00:03:17) zoom out 16.4561 13.6744
+\i (00:03:17) trapsize 1442
+\i (00:03:19) prepopup 2.2416 12.0886
+\i (00:03:21) pick grid 31.7085 15.0295
+\t (00:03:21) last pick:  31.7100 15.0300
+\i (00:03:21) prepopup 31.7662 15.0295
+\i (00:03:23) pick grid 2.3570 12.0021
+\t (00:03:23) last pick:  2.3600 12.0000
+\i (00:03:25) delete 
+\i (00:03:25) generaledit 
+\i (00:03:27) delete 
+\i (00:03:30) pick grid 2.5299 12.5788
+\t (00:03:30) last pick:  2.5300 12.5800
+\t (00:03:30) Symbol "C3"
+\i (00:03:32) pick grid 17.8689 14.4529
+\t (00:03:32) last pick:  17.8700 14.4500
+\t (00:03:32) Symbol "C1"
+\i (00:03:33) pick grid 24.1832 14.3952
+\t (00:03:33) last pick:  24.1800 14.4000
+\t (00:03:33) Dynamic Shape "Gnd, Boundary/Bottom"
+\i (00:03:34) prepopup 24.1544 14.3952
+\i (00:03:34) oops 
+\t (00:03:34) last pick:  17.8700 14.4500
+\i (00:03:35) pick grid 23.9237 14.6836
+\t (00:03:35) last pick:  23.9200 14.6800
+\t (00:03:35) Symbol "C2"
+\i (00:03:36) prepopup 23.9237 14.6836
+\i (00:03:36) done 
+\i (00:03:36) generaledit 
+\i (00:03:38) zoom out 1 
+\i (00:03:38) setwindow pcb
+\i (00:03:38) zoom out 17.5229 13.8762
+\i (00:03:38) trapsize 2883
+\i (00:03:41) save 
+\i (00:03:42) fillin yes 
+\i (00:03:43) generaledit 
+\i (00:03:45) exit 
+\t (00:03:46)     Journal end - Thu Oct 22 15:04:45 2020

@@ -1,0 +1,48 @@
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   1  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Thu Oct 22 15:05:34 2020  |
+|------------------------------------------------------------------------------|
+| COMPONENT DEFINITION added to design                                         |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    device type                                                               |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ CAP NP_0402-CAP_10NF
+ CAP NP_0402-CAP_56PF
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   2  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Thu Oct 22 15:05:34 2020  |
+|------------------------------------------------------------------------------|
+| COMPONENTS CHANGED from one device type to another in design                 |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    ref des        | new device type     |   x   |   y   |  old  device type  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C1                  CAP NP_0402-CAP_56PF                  CAP NP_G-033_MUR_56PF
+ C2                  CAP NP_0402-CAP_10NF                  CAP NP_G-033_MUR_10NF
+ C3                  CAP NP_0402-CAP_56PF                  CAP NP_G-033_MUR_56PF
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   3  |
+|------------------------------------------------------------------------------|
+|  C:.../Ethan/Projects/Embedded/BikeAddon/Hardware/layout/gps_breakout.brd    |
+|                                                    Thu Oct 22 15:05:34 2020  |
+|------------------------------------------------------------------------------|
+| SLOT PROPERTIES added to design                                              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   slot_id    |   x   |   y   |   property   |             value              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C1.2                           PRIM_FILE      .\pstchip.dat
+ C2.2                           PRIM_FILE      .\pstchip.dat
+ C3.2                           PRIM_FILE      .\pstchip.dat
+|------------------------------------------------------------------------------|
+|       Comp definitions added:       2                                        |
+|       Components changed    :       3                                        |
+|       Slot property added   :       3                                        |
+|                                                                              |
+|   Total ECO changes reported:       8                                        |
+|------------------------------------------------------------------------------|

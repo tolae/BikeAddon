@@ -1,0 +1,75 @@
+\t (00:00:21) allegro 17.2 S067 Windows SPB 64-bit Edition
+\t (00:00:21)     Journal start - Mon Oct 05 01:03:10 2020
+\t (00:00:21)         Host=DESKTOP-JV3CNMF User=Ethan Pid=21324 CPUs=16
+\t (00:00:21) CmdLine= C:\Cadence\SPB_17.2\tools\bin\allegro.exe
+\t (00:00:21) 
+\d (00:00:21) Design opened: C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom/gps_breakout.dra
+\i (00:00:21) generaledit 
+\i (00:00:23) zoom out 1 
+\i (00:00:23) setwindow pcb
+\i (00:00:23) zoom out -1.566 -1.506
+\i (00:00:23) trapsize 203
+\i (00:00:23) roam start
+\i (00:00:24) roam end
+\i (00:00:29) new 
+\i (00:00:43) newdrawfillin "gps_breakout.dra" "Package Symbol (Wizard)"
+\t (00:00:43) Starting new design...
+\i (00:00:43) trapsize 259
+\i (00:00:43) trapsize 259
+\i (00:00:43) package symbol wizard 
+   (00:00:45) Loading cmds.cxt 
+\i (00:00:45) setwindow form.sym_wizard
+\i (00:00:45) FORM sym_wizard sip YES 
+\i (00:00:47) FORM sym_wizard wiz_next  
+\i (00:00:48) FORM sym_wizard load_template  
+\t (00:00:48) Opening existing design...
+\t (00:00:48) Grids are drawn 200, 200 apart for enhanced viewing.
+\i (00:00:48) setwindow pcb
+\i (00:00:48) trapsize 188
+\i (00:00:48) trapsize 196
+\i (00:00:48) trapsize 188
+\t (00:00:48) Grids are drawn 200, 200 apart for enhanced viewing.
+\i (00:00:48) trapsize 188
+\d (00:00:48) Design opened: C:/Cadence/SPB_17.2/share/pcb/pcb_lib/symbols/template/sym_template.dra
+\i (00:00:48) trapsize 182
+\i (00:00:49) setwindow form.sym_wizard
+\i (00:00:49) FORM sym_wizard wiz_next  
+\i (00:00:50) FORM sym_wizard pack_units Millimeter 
+\i (00:00:51) FORM sym_wizard pack_units_create Millimeter 
+\i (00:00:55) FORM sym_wizard ref_des JP 
+\i (00:00:55) FORM sym_wizard wiz_next  
+\i (00:00:58) FORM sym_wizard sip_pin_count 7 
+\i (00:01:01) FORM sym_wizard sip_e 3.000 
+\i (00:01:09) FORM sym_wizard sip_width 3.000 
+\i (00:01:43) FORM sym_wizard sip_len 19.000 
+\i (00:01:43) FORM sym_wizard wiz_next  
+\i (00:01:44) FORM sym_wizard default_pad_browse  
+\i (00:01:55) fillin "Pad0p6mm_1Mm"
+\i (00:01:58) FORM sym_wizard pin1_pad_browse  
+\i (00:02:03) fillin "Padsquare0p6mm_1Mm"
+\i (00:02:05) FORM sym_wizard wiz_next  
+\i (00:02:06) FORM sym_wizard wiz_next  
+\i (00:02:07) FORM sym_wizard wiz_finish  
+\w (00:02:07) WARNING(SPMHUT-48): Scaled value has been rounded off.
+\t (00:02:07) Grids are drawn 5.080, 5.080 apart for enhanced viewing.
+\i (00:02:07) setwindow pcb
+\i (00:02:07) trapsize 4613
+\t (00:02:07) Performing DRC...
+\t (00:02:07) No DRC errors detected.
+\w (00:02:07) WARNING(SPMHUT-48): Scaled value has been rounded off.
+\w (00:02:07) WARNING(SPMHUT-48): Scaled value has been rounded off.
+\i (00:02:07) trapsize 4613
+\i (00:02:08) trapsize 163
+\i (00:02:08) trapsize 119
+\i (00:02:08) trapsize 119
+\i (00:02:09) fillin yes 
+\i (00:02:12) fillin yes 
+\t (00:02:12) Creating package symbol 'C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom/gps_breakout.psm'.
+\t (00:02:12) Starting Create symbol...
+\i (00:02:12) generaledit 
+\i (00:02:14) save 
+\i (00:02:14) fillin yes 
+\t (00:02:15) Symbol 'gps_breakout.psm' created.
+\i (00:02:15) generaledit 
+\i (00:02:17) exit 
+\t (00:02:17)     Journal end - Mon Oct 05 01:05:05 2020

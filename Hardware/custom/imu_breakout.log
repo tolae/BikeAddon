@@ -1,0 +1,23 @@
+(---------------------------------------------------------------------)
+(                                                                     )
+(    CREATE SYMBOL                                                    )
+(                                                                     )
+(    Drawing          : imu_breakout.dra                              )
+(    Software Version : 17.2S067                                      )
+(    Date/Time        : Sun Oct 04 22:48:14 2020                      )
+(                                                                     )
+(---------------------------------------------------------------------)
+
+
+Create Symbol of type: PACKAGE
+    Directory = C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom
+    Name      = imu_breakout.psm
+    User      = Ethan
+    Machine   = DESKTOP-JV3CNMF
+
+
+Create symbol started.
+ 
+
+Create symbol completed.
+

@@ -2,32 +2,132 @@
   (ProjectVersion "19981106")
   (ProjectType "PCB")
   (Folder "Design Resources"
-    (Folder "Library")
+    (Folder "Library"
+      (File ".\imported\mpu-6050.olb"
+        (Type "Schematic Library"))
+      (File ".\custom\custom.olb"
+        (Type "Schematic Library"))
+      (File ".\imported\teseo_liv3r.olb"
+        (Type "Schematic Library")))
     (NoModify)
     (File ".\bike_addons.dsn"
       (Type "Schematic Design"))
     (BuildFileAddedOrDeleted "x")
-    (CompileFileAddedOrDeleted "x"))
-  (Folder "Outputs")
+    (CompileFileAddedOrDeleted "x")
+    (DOCKED "TRUE")
+    (DOCKING_POSITION "59420")
+    (Netlist_TAB "0")
+    ("Create Allegro Netlist" "TRUE")
+    ("Allegro Netlist Directory" "allegro")
+    ("View Allegro Netlist Files" "FALSE")
+    ("Allegro Netlist Create DCF File" "FALSE")
+    ("Update Allegro Board" "TRUE")
+    ("Allegro Netlist Output Board File"
+       "C:\Users\Ethan\Projects\Embedded\BikeAddon\Hardware\layout\gps_breakout.brd")
+    ("Allegro Netlist Remove Etch" "FALSE")
+    ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
+    ("Allegro Netlist Open Board in Allegro" "ORCAD")
+    ("Allegro Setup Backup Versions" "3")
+    ("Allegro Setup Ignore Constraints" "FALSE")
+    ("Allegro Setup Part Type Length" "31")
+    ("Allegro Netlist Combine Property String" "PCB Footprint")
+    ("Allegro Netlist Ignore Fixed Property" "FALSE")
+    ("Allegro Netlist User Defined Property" "FALSE")
+    (RootChangedForceReNetlist "x")
+    ("Allegro Netlist Input Board File"
+       "C:\Users\Ethan\Projects\Embedded\BikeAddon\Hardware\layout\gps_breakout.brd"))
+  (Folder "Outputs"
+    (File ".\allegro\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File ".\allegro\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File ".\allegro\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat")))
   (Folder "Referenced Projects")
-  (PartMRUSelector)
+  (PartMRUSelector
+    (gps_breakout
+      (FullPartName "gps_breakout.Normal")
+      (LibraryName
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\CUSTOM\CUSTOM.OLB")
+      (DeviceIndex "0"))
+    (imu_breakout
+      (FullPartName "imu_breakout.Normal")
+      (LibraryName
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\CUSTOM\CUSTOM.OLB")
+      (DeviceIndex "0"))
+    (GND
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    ("CAP NP"
+      (FullPartName "CAP NP.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (INDUCTOR
+      (FullPartName "INDUCTOR.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (TESEO-LIV3F
+      (FullPartName "TESEO-LIV3F.Normal")
+      (LibraryName
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\IMPORTED\TESEO_LIV3R.OLB")
+      (DeviceIndex "0"))
+    (breakout_throughholes
+      (FullPartName "breakout_throughholes.Normal")
+      (LibraryName
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\CUSTOM\CUSTOM.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (MPU-6050
+      (FullPartName "MPU-6050.Normal")
+      (LibraryName
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\IMPORTED\MPU-6050.OLB")
+      (DeviceIndex "0")))
   (GlobalState
     (FileView
-      (Path "Design Resources"))
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn")
+      (Path "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"
+         "GPS")
+      (Path "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"
+         "IMU")
+      (Path "Design Resources" "Library")
+      (Select "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 0 200 0 420"))
+        (Placement "44 0 1 -1 -1 -1 -1 0 250 0 906"))
       (Tab 0))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 2 3 -1 -1 -8 -31 52 1655 52 511")
-        (Scroll "-404 0")
-        (Zoom "100")
+        (Placement "44 0 1 -1 -1 -8 -31 52 1339 52 525")
+        (Scroll "185 296")
+        (Zoom "200")
         (Occurrence "/"))
       (Path
-         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDONS\HARDWARE\BIKE_ADDONS.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "PAGE1"))))
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\BIKE_ADDONS.DSN")
+      (Schematic "GPS")
+      (Page "PAGE1"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 78 1365 78 551")
+        (Scroll "-134 0")
+        (Zoom "100"))
+      (Path
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\BIKE_ADDONS.DSN")
+      (Schematic "IMU")
+      (Page "PAGE1")))
+  (MPSSessionName "Ethan")
+  (ISPCBBASICLICENSE "false"))
