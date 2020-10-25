@@ -3,8 +3,8 @@
 (    Allegro Netrev Import Logic                                      )
 (                                                                     )
 (    Drawing          : gps_breakout.brd                              )
-(    Software Version : 17.2S067                                      )
-(    Date/Time        : Mon Oct 05 01:06:09 2020                      )
+(    Software Version : 17.2S071                                      )
+(    Date/Time        : Thu Oct 22 15:05:34 2020                      )
 (                                                                     )
 (---------------------------------------------------------------------)
 
@@ -27,7 +27,7 @@ CmdLine: netrev.exe -y 1 -i C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\
 ------ Preparing to read pst files ------
 
 Starting to read C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pstchip.dat 
-   Finished reading C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pstchip.dat (00:00:00.02)
+   Finished reading C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pstchip.dat (00:00:00.07)
 Starting to read C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pstxprt.dat 
    Finished reading C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pstxprt.dat (00:00:00.00)
 Starting to read C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pstxnet.dat 
@@ -38,15 +38,15 @@ Starting to read C:/USERS/ETHAN/PROJECTS/EMBEDDED/BIKEADDON/HARDWARE/allegro/pst
 
 ------ Library Paths ------
 MODULEPATH =  . 
-           c:/cadence/spb_17.2/share/local/pcb/modules 
+           C:/Cadence/SPB_17.2/share/local/pcb/modules 
 
 PSMPATH =  . 
            symbols 
            .. 
            ../symbols 
-           c:/cadence/spb_17.2/share/local/pcb/symbols 
-           c:/cadence/spb_17.2/share/pcb/pcb_lib/symbols 
-           c:/cadence/spb_17.2/share/pcb/allegrolib/symbols 
+           C:/Cadence/SPB_17.2/share/local/pcb/symbols 
+           C:/Cadence/SPB_17.2/share/pcb/pcb_lib/symbols 
+           C:/Cadence/SPB_17.2/share/pcb/allegrolib/symbols 
            C:/Users/Ethan/Projects/MSD-Lower-Extremity-Weight-Bearing-Monitor-Orthotic/electronics/custom_parts/layout 
            C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom/ 
            C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/imported/ 
@@ -55,9 +55,9 @@ PADPATH =  .
            symbols 
            .. 
            ../symbols 
-           c:/cadence/spb_17.2/share/local/pcb/padstacks 
-           c:/cadence/spb_17.2/share/pcb/pcb_lib/symbols 
-           c:/cadence/spb_17.2/share/pcb/allegrolib/symbols 
+           C:/Cadence/SPB_17.2/share/local/pcb/padstacks 
+           C:/Cadence/SPB_17.2/share/pcb/pcb_lib/symbols 
+           C:/Cadence/SPB_17.2/share/pcb/allegrolib/symbols 
            C:/Users/Ethan/Projects/MSD-Lower-Extremity-Weight-Bearing-Monitor-Orthotic/electronics/custom_parts/layout 
            C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/custom/ 
            C:/Users/Ethan/Projects/Embedded/BikeAddon/Hardware/imported/ 
@@ -66,9 +66,9 @@ PADPATH =  .
 ------ Summary Statistics ------
 
 
-netrev run on Oct 5 1:06:09 2020
+netrev run on Oct 22 15:05:34 2020
    DESIGN NAME : 'BIKE_ADDONS'
-   PACKAGING ON Apr 26 2020 05:36:08
+   PACKAGING ON Sep 27 2020 03:58:55
 
    COMPILE 'logic'
    CHECK_PIN_NAMES OFF
@@ -91,6 +91,6 @@ netrev run on Oct 5 1:06:09 2020
  No oversight detected
  No warning detected
 
-cpu time      0:00:31
+cpu time      0:00:44
 elapsed time  0:00:00
 

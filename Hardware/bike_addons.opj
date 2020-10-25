@@ -91,35 +91,43 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources" ".\bike_addons.dsn")
-      (Path "Design Resources" ".\bike_addons.dsn" "GPS")
+      (Path "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn")
+      (Path "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"
+         "GPS")
+      (Path "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"
+         "IMU")
       (Path "Design Resources" "Library")
-      (Path "Design Resources" "Library" ".\custom\custom.olb")
-      (Select "Design Resources" ".\bike_addons.dsn"))
+      (Select "Design Resources"
+         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 250 0 866"))
+        (Placement "44 0 1 -1 -1 -1 -1 0 250 0 906"))
       (Tab 0))
-    (Doc
-      (Type "COrPrmBrowserDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 0 1131 0 301"))
-      (Path
-         "C:\Users\Ethan\Projects\Embedded\BikeAddon\Hardware\custom\custom.olb")
-      (Package "GPS_BREAKOUT")
-      (PartType "1"))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 2 3 -1 -1 -8 -31 104 1235 104 405")
-        (Scroll "259 337")
+        (Placement "44 0 1 -1 -1 -8 -31 52 1339 52 525")
+        (Scroll "185 296")
         (Zoom "200")
         (Occurrence "/"))
       (Path
          "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\BIKE_ADDONS.DSN")
       (Schematic "GPS")
+      (Page "PAGE1"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 78 1365 78 551")
+        (Scroll "-134 0")
+        (Zoom "100"))
+      (Path
+         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\BIKE_ADDONS.DSN")
+      (Schematic "IMU")
       (Page "PAGE1")))
   (MPSSessionName "Ethan")
   (ISPCBBASICLICENSE "false"))

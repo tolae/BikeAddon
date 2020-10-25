@@ -1,6 +1,6 @@
 FILE_TYPE=LIBRARY_PARTS;
-{ Using PSTWRITER 17.2.0 d001Oct-05-2020 at 01:06:08}
-primitive 'CAP NP_G-033_MUR_56PF';
+{ Using PSTWRITER 17.2.0 d001Oct-22-2020 at 15:05:33}
+primitive 'CAP NP_0402-CAP_56PF';
   pin
     '1':
       PIN_NUMBER='(1)';
@@ -11,11 +11,11 @@ primitive 'CAP NP_G-033_MUR_56PF';
   end_pin;
   body
     PART_NAME='CAP NP';
-    JEDEC_TYPE='G-033_MUR';
+    JEDEC_TYPE='0402-CAP';
     VALUE='56pF';
   end_body;
 end_primitive;
-primitive 'CAP NP_G-033_MUR_10NF';
+primitive 'CAP NP_0402-CAP_10NF';
   pin
     '1':
       PIN_NUMBER='(1)';
@@ -26,7 +26,7 @@ primitive 'CAP NP_G-033_MUR_10NF';
   end_pin;
   body
     PART_NAME='CAP NP';
-    JEDEC_TYPE='G-033_MUR';
+    JEDEC_TYPE='0402-CAP';
     VALUE='10nF';
   end_body;
 end_primitive;
