@@ -58,6 +58,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define LSM303C_MAG_C_Pin GPIO_PIN_0
+#define LSM303C_MAG_C_GPIO_Port GPIOC
+#define L3GD20_INT2_Pin GPIO_PIN_8
+#define L3GD20_INT2_GPIO_Port GPIOE
+#define L3GD20_INT1_Pin GPIO_PIN_2
+#define L3GD20_INT1_GPIO_Port GPIOD
+#define L3GD20_CS_Pin GPIO_PIN_7
+#define L3GD20_CS_GPIO_Port GPIOD
+#define LSM303C_XL_CS_Pin GPIO_PIN_0
+#define LSM303C_XL_CS_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
