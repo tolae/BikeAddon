@@ -47,7 +47,7 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+#define TIM_CHANNEL_MAX (6)
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

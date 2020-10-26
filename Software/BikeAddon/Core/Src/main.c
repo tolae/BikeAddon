@@ -21,6 +21,7 @@
 #include "main.h"
 #include "dma.h"
 #include "i2c.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -38,6 +39,18 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+/* Front Wheel Timer Configurations */
+#define FRONT_WHEEL_TIM htim2
+#define FRONT_WHEEL_TIMX 2
+#define FRONT_WHEEL_CHL TIM_CHANNEL_3
+/* Back Wheel Timer Configurations */
+#define BACK_WHEEL_TIM htim2
+#define BACK_WHEEL_TIMX 2
+#define BACK_WHEEL_CHL TIM_CHANNEL_4
+/* Pedal Gear Timer Configurations */
+#define PEDAL_GEAR_TIM htim1
+#define PEDAL_GEAR_TIMX 1
+#define PEDAL_GEAR_CHL TIM_CHANNEL_4
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -71,9 +84,10 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	frnt_wheel.id = bit_position_to_int(TIM_CHANNEL_1);
-	back_wheel.id = bit_position_to_int(TIM_CHANNEL_3);
-	pedal_gear.id = bit_position_to_int(TIM_CHANNEL_4);
+	/* ID = TIMX * TIM_CHANNEL_MAX(6) + TIM_CHANNEL_X */
+	frnt_wheel.id = get_hall_effect_sensor_id(FRONT_WHEEL_TIMX, FRONT_WHEEL_CHL);
+	back_wheel.id = get_hall_effect_sensor_id(BACK_WHEEL_TIMX, BACK_WHEEL_CHL);
+	pedal_gear.id = get_hall_effect_sensor_id(PEDAL_GEAR_TIMX, PEDAL_GEAR_CHL);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -98,13 +112,15 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART2_UART_Init();
-  MX_TIM3_Init();
   MX_UART4_Init();
-  MX_I2C2_Init();
+  MX_I2C1_Init();
+  MX_SPI2_Init();
+  MX_TIM2_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-//  HAL_TIM_IC_Start_DMA(&htim3, 1 << frnt_wheel.id, frnt_wheel.buffer, frnt_wheel.buf_len);
-//  HAL_TIM_IC_Start_DMA(&htim3, 1 << back_wheel.id, back_wheel.buffer, back_wheel.buf_len);
-//  HAL_TIM_IC_Start_DMA(&htim3, 1 << pedal_gear.id, pedal_gear.buffer, pedal_gear.buf_len);
+//  HAL_TIM_IC_Start_DMA(&(FRONT_WHEEL_TIM), FRONT_WHEEL_CHL, frnt_wheel.buffer, frnt_wheel.buf_len);
+//  HAL_TIM_IC_Start_DMA(&(BACK_WHEEL_TIM), BACK_WHEEL_CHL, back_wheel.buffer, back_wheel.buf_len);
+//  HAL_TIM_IC_Start_DMA(&(PEDAL_GEAR_TIM), PEDAL_GEAR_CHL, pedal_gear.buffer, pedal_gear.buf_len);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -172,10 +188,10 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_UART4
-                              |RCC_PERIPHCLK_I2C2;
+                              |RCC_PERIPHCLK_I2C1;
   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   PeriphClkInit.Uart4ClockSelection = RCC_UART4CLKSOURCE_PCLK1;
-  PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_PCLK1;
+  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();

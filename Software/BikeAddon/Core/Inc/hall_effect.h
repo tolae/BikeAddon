@@ -10,7 +10,7 @@
 typedef struct hall_effect_sensor
 {
 	/* The sensor channel id this sensor is attached to */
-	uint32_t id;
+	uint8_t id;
 	/* The buffer to store the DMA data.
 	 * If data size < 32, then the buffer size doesn't matter
 	 * If data size > 32, change the buffer size to match as DMA caps at 32
@@ -22,6 +22,8 @@ typedef struct hall_effect_sensor
 	uint32_t diff;
 } hall_effect_sensor_t;
 
+inline uint32_t get_hall_effect_sensor_id(uint32_t timx, uint32_t channel);
 void configure_hall_effect(hall_effect_sensor_t* sensor);
+void remove_hall_effect(hall_effect_sensor_t* sensor);
 
 #endif
