@@ -22,7 +22,7 @@ typedef struct hall_effect_sensor
 	uint32_t diff;
 } hall_effect_sensor_t;
 
-inline uint32_t get_hall_effect_sensor_id(uint32_t timx, uint32_t channel);
+uint32_t get_hall_effect_sensor_id(uint32_t timx, uint32_t channel);
 void configure_hall_effect(hall_effect_sensor_t* sensor);
 void remove_hall_effect(hall_effect_sensor_t* sensor);
 

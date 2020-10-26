@@ -11,7 +11,7 @@ hall_effect_sensor_t* configured_h_effect_sensors[MAX_NUMBER_OF_SENSORS] = { NUL
 
 void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type);
 
-inline uint32_t get_hall_effect_sensor_id(uint32_t timx, uint32_t channel)
+uint32_t get_hall_effect_sensor_id(uint32_t timx, uint32_t channel)
 {
 	return timx * TIM_CHANNEL_MAX + bit_position_to_int(channel);
 }
@@ -75,11 +75,11 @@ void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type)
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
 	int timx = 1;
-	switch(htim->Instance)
+	switch((unsigned long)(htim->Instance))
 	{
-	case TIM2:
+	case (unsigned long)TIM2:
 		timx++;
-	case TIM1:
+	case (unsigned long)TIM1:
 		hall_effect_callback(get_hall_effect_sensor_id(timx, htim->Channel), FULL);
 		break;
 	default:
@@ -91,11 +91,11 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim)
 {
 	int timx = 1;
-	switch(htim->Instance)
+	switch((unsigned long)(htim->Instance))
 	{
-	case TIM2:
+	case (unsigned long)TIM2:
 		timx++;
-	case TIM1:
+	case (unsigned long)TIM1:
 		hall_effect_callback(get_hall_effect_sensor_id(timx, htim->Channel), HALF);
 		break;
 	default:
