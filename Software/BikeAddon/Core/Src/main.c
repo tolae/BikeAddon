@@ -31,6 +31,7 @@
 #include "common.h"
 #include "hall_effect.h"
 #include "l3gd20.h"
+#include "lsm303c.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -120,6 +121,7 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   l3gd20_init(&hspi2);
+  lsm303c_init(&hspi2);
 //  HAL_TIM_IC_Start_DMA(&(FRONT_WHEEL_TIM), FRONT_WHEEL_CHL, frnt_wheel.buffer, frnt_wheel.buf_len);
 //  HAL_TIM_IC_Start_DMA(&(BACK_WHEEL_TIM), BACK_WHEEL_CHL, back_wheel.buffer, back_wheel.buf_len);
 //  HAL_TIM_IC_Start_DMA(&(PEDAL_GEAR_TIM), PEDAL_GEAR_CHL, pedal_gear.buffer, pedal_gear.buf_len);
@@ -127,6 +129,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_UART_Transmit(&huart2, (uint8_t *)"Hi!\n\r", sizeof("Hi!\n\r"), 0xFFF);
   while (1)
   {
 	  /* Calculate current speed via hall effect sensors */
