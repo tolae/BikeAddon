@@ -130,7 +130,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  char buffer[32];
+  char buffer[64];
   size_t size = 0;
   xyz_axis_t gyro =
   {
@@ -142,12 +142,12 @@ int main(void)
   uint8_t reg;
   while (1)
   {
-	  HAL_Delay(1500);
+	  HAL_Delay(1000);
 	  l3gd20_read(&reg, L3GD20_STATUS_REG_ADDR, 1);
 	  if (reg & 0x0F)
 	  {
 		  read_xyz_values_l3gd20(&gyro);
-		  size = snprintf(buffer, 31, "x: %ld, y: %ld, z: %ld\n\r", gyro.x, gyro.y, gyro.z);
+		  size = snprintf(buffer, 63, "x: %ld, y: %ld, z: %ld\n\r", gyro.x, gyro.y, gyro.z);
 		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
 	  }
 	  else

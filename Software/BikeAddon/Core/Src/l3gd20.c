@@ -1,5 +1,9 @@
 #include "l3gd20.h"
 
+#define G_GAIN_X
+#define G_GAIN_Y
+#define G_GAIN_Z
+
 typedef struct
 {
 	union
@@ -69,8 +73,21 @@ void l3gd20_prep_addr(l3gd20_spiaddr_t* inout_addr, uint32_t rw, uint8_t size)
 
 IMPLEMENT_READ_XYZ_VALUES(l3gd20)
 {
-	l3gd20_read((uint8_t*)(&(inout_xyz_axis->x)), L3GD20_OUT_X_L_ADDR, 2);
-	l3gd20_read((uint8_t*)(&(inout_xyz_axis->y)), L3GD20_OUT_Y_L_ADDR, 2);
-	l3gd20_read((uint8_t*)(&(inout_xyz_axis->z)), L3GD20_OUT_Z_L_ADDR, 2);
+	/* Intermediately consider everything as signed 16 bit integer */
+	int16_t x;
+	int16_t y;
+	int16_t z;
+
+	l3gd20_read((uint8_t*)(&x), L3GD20_OUT_X_L_ADDR, 2);
+	l3gd20_read((uint8_t*)(&y), L3GD20_OUT_Y_L_ADDR, 2);
+	l3gd20_read((uint8_t*)(&z), L3GD20_OUT_Z_L_ADDR, 2);
+
+	x = x * L3GD20_250DPS_SENSITIVITY;
+	y = y * L3GD20_250DPS_SENSITIVITY;
+	z = z * L3GD20_250DPS_SENSITIVITY;
+
+	inout_xyz_axis->x = x;
+	inout_xyz_axis->y = y;
+	inout_xyz_axis->z = z;
 }
 

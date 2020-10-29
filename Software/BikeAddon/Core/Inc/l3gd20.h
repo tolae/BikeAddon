@@ -7,6 +7,7 @@
 #define L3GD20_NEW_XYZ_DATA (0x07)
 #define L3GD20_NEW_DATA_SET (0x08)
 
+/* Register Map */
 #define L3GD20_WHO_AM_I_ADDR          0x0F  /* device identification register */
 #define L3GD20_CTRL_REG1_ADDR         0x20  /* Control register 1 */
 #define L3GD20_CTRL_REG2_ADDR         0x21  /* Control register 2 */
@@ -35,14 +36,10 @@
 #define L3GD20_INT1_TSH_ZL_ADDR       0x37  /* Interrupt 1 Threshold Z register */
 #define L3GD20_INT1_DURATION_ADDR     0x38  /* Interrupt 1 DURATION register */
 
-#define L3GD20_LOW_ODR_ADDR     0x39  /* Low ODR register */
-
-typedef struct Gyro
-{
-	uint16_t x;
-	uint16_t y;
-	uint16_t z;
-} gyro_t;
+/* Sensitivity (mdps/digit) */
+#define L3GD20_250DPS_SENSITIVITY 0.00875f
+#define L3GD20_500DPS_SENSITVITY 0.01750f
+#define L3GD20_2000DPS_SENSITVITY 0.070f
 
 void l3gd20_init(SPI_HandleTypeDef* spix);
 void l3gd20_write(uint8_t* in_buffer, uint8_t addr, uint8_t size);
