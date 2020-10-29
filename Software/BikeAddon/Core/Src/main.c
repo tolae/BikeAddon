@@ -28,6 +28,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 #include "common.h"
 #include "hall_effect.h"
 #include "l3gd20.h"
@@ -129,9 +130,31 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_UART_Transmit(&huart2, (uint8_t *)"Hi!\n\r", sizeof("Hi!\n\r"), 0xFFF);
+  char buffer[32];
+  size_t size = 0;
+  xyz_axis_t gyro =
+  {
+	.x = 0,
+	.y = 0,
+	.z = 0
+  };
+  HAL_UART_Transmit(&huart2, (uint8_t *)"Hi!\n\r", sizeof("Hi!\n\r"), 0xFFFF);
+  uint8_t reg;
   while (1)
   {
+	  HAL_Delay(1500);
+	  l3gd20_read(&reg, L3GD20_STATUS_REG_ADDR, 1);
+	  if (reg & 0x0F)
+	  {
+		  read_xyz_values_l3gd20(&gyro);
+		  size = snprintf(buffer, 31, "x: %ld, y: %ld, z: %ld\n\r", gyro.x, gyro.y, gyro.z);
+		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+	  }
+	  else
+	  {
+		  size = snprintf(buffer, 31, "Status: %x\n\r", reg);
+		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+	  }
 	  /* Calculate current speed via hall effect sensors */
 	  	  /* speed = distance_between_mags / time */
 	  /* Calculate acceleration speed via hall effect sensors */

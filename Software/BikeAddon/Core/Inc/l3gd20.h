@@ -2,6 +2,7 @@
 #define _L3GD20_H_
 
 #include "main.h"
+#include "xyz_axis.h"
 
 #define L3GD20_NEW_XYZ_DATA (0x07)
 #define L3GD20_NEW_DATA_SET (0x08)
@@ -44,7 +45,9 @@ typedef struct Gyro
 } gyro_t;
 
 void l3gd20_init(SPI_HandleTypeDef* spix);
-void l3gd20_write(SPI_HandleTypeDef* spix, uint8_t* in_buffer, uint8_t addr, uint8_t size);
-void l3gd20_read(SPI_HandleTypeDef* spix, uint8_t* out_buffer, uint8_t addr, uint8_t size);
+void l3gd20_write(uint8_t* in_buffer, uint8_t addr, uint8_t size);
+void l3gd20_read(uint8_t* out_buffer, uint8_t addr, uint8_t size);
+
+IMPLEMENT_READ_XYZ_VALUES(l3gd20);
 
 #endif
