@@ -91,43 +91,15 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources"
-         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn")
-      (Path "Design Resources"
-         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"
-         "GPS")
-      (Path "Design Resources"
-         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"
-         "IMU")
-      (Path "Design Resources" "Library")
-      (Select "Design Resources"
-         "c:\users\ethan\projects\embedded\bikeaddon\hardware\bike_addons.dsn"))
+      (Path "Design Resources" ".\bike_addons.dsn")
+      (Path "Design Resources" ".\bike_addons.dsn" "GPS")
+      (Path "Design Resources" ".\bike_addons.dsn" "IMU")
+      (Path "Design Resources" "Library"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 250 0 906"))
-      (Tab 0))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 52 1339 52 525")
-        (Scroll "185 296")
-        (Zoom "200")
-        (Occurrence "/"))
-      (Path
-         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\BIKE_ADDONS.DSN")
-      (Schematic "GPS")
-      (Page "PAGE1"))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 78 1365 78 551")
-        (Scroll "-134 0")
-        (Zoom "100"))
-      (Path
-         "C:\USERS\ETHAN\PROJECTS\EMBEDDED\BIKEADDON\HARDWARE\BIKE_ADDONS.DSN")
-      (Schematic "IMU")
-      (Page "PAGE1")))
+        (Placement "44 0 1 -1 -1 -1 -1 0 250 0 866"))
+      (Tab 0)))
   (MPSSessionName "Ethan")
   (ISPCBBASICLICENSE "false"))
