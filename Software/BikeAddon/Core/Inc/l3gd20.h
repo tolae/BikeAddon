@@ -37,9 +37,9 @@
 #define L3GD20_INT1_DURATION_ADDR     0x38  /* Interrupt 1 DURATION register */
 
 /* Sensitivity (mdps/digit) */
-#define L3GD20_250DPS_SENSITIVITY 0.00875f
-#define L3GD20_500DPS_SENSITVITY 0.01750f
-#define L3GD20_2000DPS_SENSITVITY 0.070f
+#define L3GD20_250DPS_SENSITIVITY	0.00875f
+#define L3GD20_500DPS_SENSITVITY	0.01750f
+#define L3GD20_2000DPS_SENSITVITY	0.070f
 
 void l3gd20_init(SPI_HandleTypeDef* spix);
 void l3gd20_write(uint8_t* in_buffer, uint8_t addr, uint8_t size);

@@ -36,8 +36,8 @@ void lsm303c_init(SPI_HandleTypeDef* spix)
 	/* Disable I2C comms (using SPI) */
 	config = LSM303C_CTRL_REG4_A_DEFAULT | 0x33;
 	lsm303c_write(&config, LSM303C_CTRL_REG4_A_ADDR, 1);
-	/* Set ODR to 50 Hz Low Pass Filter */
-	config = LSM303C_CTRL_REG1_A_DEFAULT | 0x20;
+	/* Set ODR to 100 Hz Low Pass Filter */
+	config = LSM303C_CTRL_REG1_A_DEFAULT | 0x30;
 	lsm303c_write(&config, LSM303C_CTRL_REG1_A_ADDR, 1);
 
 	/* Dummy check to ensure the system is working */
@@ -74,7 +74,20 @@ void lsm303c_prep_addr(lsm303c_spiaddr_t* inout_addr, uint32_t rw)
 
 IMPLEMENT_READ_XYZ_VALUES(lsm303c)
 {
-	lsm303c_read((uint8_t*)(&(inout_xyz_axis->x)), LSM303C_OUT_X_L_A_ADDR, 2);
-	lsm303c_read((uint8_t*)(&(inout_xyz_axis->y)), LSM303C_OUT_Y_L_A_ADDR, 2);
-	lsm303c_read((uint8_t*)(&(inout_xyz_axis->z)), LSM303C_OUT_Z_L_A_ADDR, 2);
+	/* Intermediately consider everything as signed 16 bit integer */
+	int16_t x;
+	int16_t y;
+	int16_t z;
+
+	lsm303c_read((uint8_t*)(&(x)), LSM303C_OUT_X_L_A_ADDR, 2);
+	lsm303c_read((uint8_t*)(&(y)), LSM303C_OUT_Y_L_A_ADDR, 2);
+	lsm303c_read((uint8_t*)(&(z)), LSM303C_OUT_Z_L_A_ADDR, 2);
+
+	x = x * LSM303C_ACCEL_8G_SENSITIVITY;
+	y = y * LSM303C_ACCEL_8G_SENSITIVITY;
+	z = z * LSM303C_ACCEL_8G_SENSITIVITY;
+
+	inout_xyz_axis->x = x;
+	inout_xyz_axis->y = y;
+	inout_xyz_axis->z = z;
 }
