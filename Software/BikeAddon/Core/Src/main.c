@@ -33,6 +33,7 @@
 #include "hall_effect.h"
 #include "l3gd20.h"
 #include "lsm303c.h"
+#include "mpu6050.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,6 +68,8 @@
 hall_effect_sensor_t frnt_wheel;
 hall_effect_sensor_t back_wheel;
 hall_effect_sensor_t pedal_gear;
+
+MPU6050_t mpu_dev;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -121,8 +124,9 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  l3gd20_init(&hspi2);
-  lsm303c_init(&hspi2);
+//  l3gd20_init(&hspi2);
+//  lsm303c_init(&hspi2);
+  while (MPU6050_Init(&hi2c1) == 1);
 //  HAL_TIM_IC_Start_DMA(&(FRONT_WHEEL_TIM), FRONT_WHEEL_CHL, frnt_wheel.buffer, frnt_wheel.buf_len);
 //  HAL_TIM_IC_Start_DMA(&(BACK_WHEEL_TIM), BACK_WHEEL_CHL, back_wheel.buffer, back_wheel.buf_len);
 //  HAL_TIM_IC_Start_DMA(&(PEDAL_GEAR_TIM), PEDAL_GEAR_CHL, pedal_gear.buffer, pedal_gear.buf_len);
@@ -132,50 +136,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   char buffer[64];
   size_t size = 0;
-  xyz_axis_t gyro =
-  {
-	.x = 0,
-	.y = 0,
-	.z = 0
-  };
-
-  xyz_axis_t accel =
-  {
-	.x = 0,
-	.y = 0,
-	.z = 0
-  };
   HAL_UART_Transmit(&huart2, (uint8_t *)"Hi!\n\r", sizeof("Hi!\n\r"), 0xFFFF);
-  uint8_t reg;
   while (1)
   {
+	  MPU6050_Read_All(&hi2c1, &mpu_dev);
+	  size = snprintf(buffer, 64, "Angles: X: %0.4f\tY: %0.4f\n\r", mpu_dev.KalmanAngleX, mpu_dev.KalmanAngleY);
+	  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+	  // Gyro
+	  size = snprintf(buffer, 64, "Gyro: X: %0.4f\tY: %0.4f\tZ: %0.4f\n\r", mpu_dev.Gx, mpu_dev.Gy, mpu_dev.Gz);
+	  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+	  // Accel
+	  size = snprintf(buffer, 64, "Accel: X: %0.4f\tY: %0.4f\tZ: %0.4f\n\r", mpu_dev.Ax, mpu_dev.Ay, mpu_dev.Az);
+	  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
 	  HAL_Delay(100);
-	  l3gd20_read(&reg, L3GD20_STATUS_REG_ADDR, 1);
-	  if (reg & 0x0F)
-	  {
-		  read_xyz_values_l3gd20(&gyro);
-		  HAL_UART_Transmit(&huart2, (uint8_t *)"Gyro\n\r", sizeof("Gyro\n\r"), 0xFFFF);
-		  size = snprintf(buffer, 63, "x: %ld, y: %ld, z: %ld\n\r", gyro.x, gyro.y, gyro.z);
-		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
-	  }
-	  else
-	  {
-		  size = snprintf(buffer, 63, "Gyro Status: %x\n\r", reg);
-		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
-	  }
-	  lsm303c_read(&reg, LSM303C_STATUS_REG_A_ADDR, 1);
-	  if (reg & 0x0F)
-	  {
-		  read_xyz_values_lsm303c(&accel);
-		  HAL_UART_Transmit(&huart2, (uint8_t *)"Accel\n\r", sizeof("Accel\n\r"), 0xFFFF);
-		  size = snprintf(buffer, 63, "x: %ld, y: %ld, z: %ld\n\r", accel.x, accel.y, accel.z);
-		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
-	  }
-	  else
-	  {
-		  size = snprintf(buffer, 63, "Accel Status: %x\n\r", reg);
-		  HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
-	  }
 	  /* Calculate current speed via hall effect sensors */
 	  	  /* speed = distance_between_mags / time */
 	  /* Calculate acceleration speed via hall effect sensors */
