@@ -67,6 +67,7 @@ void hall_effect_callback(uint32_t sensor_id, uint32_t callback_type)
 					sensor->diff = sensor->buffer[1] - sensor->buffer[0];
 					break;
 				}
+				sensor->ticks += 1;
 			}
 		}
 	}
