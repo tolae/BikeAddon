@@ -83,6 +83,8 @@ hall_effect_sensor_t back_wheel;
 hall_effect_sensor_t pedal_gear;
 
 MPU6050_t mpu_dev;
+lsm303c_t lsm_dev;
+l3gd20_t l3g_dev;
 
 kalman_t kalman_x = {
         .q_angle = 0.001,
@@ -148,54 +150,54 @@ void zero_out_angles();
   */
 int main(void)
 {
-	/* USER CODE BEGIN 1 */
+  /* USER CODE BEGIN 1 */
 	/* ID = TIMX * TIM_CHANNEL_MAX(6) + TIM_CHANNEL_X */
 	frnt_wheel.id = get_hall_effect_sensor_id(FRONT_WHEEL_TIMX, FRONT_WHEEL_CHL);
 	back_wheel.id = get_hall_effect_sensor_id(BACK_WHEEL_TIMX, BACK_WHEEL_CHL);
 	pedal_gear.id = get_hall_effect_sensor_id(PEDAL_GEAR_TIMX, PEDAL_GEAR_CHL);
-	/* USER CODE END 1 */
+  /* USER CODE END 1 */
 
-	/* MCU Configuration--------------------------------------------------------*/
+  /* MCU Configuration--------------------------------------------------------*/
 
-	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
 
-	/* USER CODE BEGIN Init */
+  /* USER CODE BEGIN Init */
 	configure_hall_effect(&frnt_wheel);
 	configure_hall_effect(&back_wheel);
 	configure_hall_effect(&pedal_gear);
-	/* USER CODE END Init */
+  /* USER CODE END Init */
 
-	/* Configure the system clock */
-	SystemClock_Config();
+  /* Configure the system clock */
+  SystemClock_Config();
 
-	/* USER CODE BEGIN SysInit */
+  /* USER CODE BEGIN SysInit */
 
-	/* USER CODE END SysInit */
+  /* USER CODE END SysInit */
 
-	/* Initialize all configured peripherals */
-	MX_GPIO_Init();
-	MX_DMA_Init();
-	MX_USART2_UART_Init();
-	MX_UART4_Init();
-	MX_I2C1_Init();
-	MX_SPI2_Init();
-	MX_TIM2_Init();
-	MX_TIM1_Init();
-	MX_TIM3_Init();
-	/* USER CODE BEGIN 2 */
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_DMA_Init();
+  MX_USART2_UART_Init();
+  MX_UART4_Init();
+  MX_I2C1_Init();
+  MX_SPI2_Init();
+  MX_TIM2_Init();
+  MX_TIM1_Init();
+  MX_TIM3_Init();
+  /* USER CODE BEGIN 2 */
 	htim3.Instance->ARR = SYSTEM_TIME_MS_TO_TIM3(dt_ms);
 
-//	l3gd20_init(&hspi2);
-//	lsm303c_init(&hspi2);
+	l3gd20_init(&hspi2);
+	lsm303c_init(&hspi2);
 	while (MPU6050_Init(&hi2c1) == 1);
 	HAL_TIM_IC_Start_DMA(&(FRONT_WHEEL_TIM), FRONT_WHEEL_CHL, frnt_wheel.buffer, frnt_wheel.buf_len);
 	HAL_TIM_IC_Start_DMA(&(BACK_WHEEL_TIM), BACK_WHEEL_CHL, back_wheel.buffer, back_wheel.buf_len);
 	HAL_TIM_IC_Start_DMA(&(PEDAL_GEAR_TIM), PEDAL_GEAR_CHL, pedal_gear.buffer, pedal_gear.buf_len);
-	/* USER CODE END 2 */
+  /* USER CODE END 2 */
 
-	/* Infinite loop */
-	/* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
 	zero_out_angles();
 
 	HAL_Delay(2000);
@@ -211,12 +213,21 @@ int main(void)
 		compute_heffects();
 
 #if MY_DEBUG == 1
+		HAL_UART_Transmit(&huart2, (uint8_t *)"===========Built-in Raw===========\n\r", sizeof("===========Built-in Raw===========\n\r"), 0xFFFF);
+
+		size = snprintf(buffer, 64, "Acce: X: %0.4f\tY: %0.4f\n\r", lsm_dev.acc_x, lsm_dev.acc_y);
+		HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+		size = snprintf(buffer, 64, "Gyro: X: %0.4f\tY: %0.4f\tZ: %0.4f\n\r", l3g_dev.gyro_x, l3g_dev.gyro_y, l3g_dev.gyro_z);
+		HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+
+		HAL_UART_Transmit(&huart2, (uint8_t *)"===========MPU Raw===========\n\r", sizeof("===========MPU Raw===========\n\r"), 0xFFFF);
+
 		size = snprintf(buffer, 64, "Acce: X: %0.4f\tY: %0.4f\n\r", mpu_dev.AccX, mpu_dev.AccY);
 		HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
 		size = snprintf(buffer, 64, "Gyro: X: %0.4f\tY: %0.4f\tZ: %0.4f\n\r", mpu_dev.GyroX, mpu_dev.GyroY, mpu_dev.GyroZ);
 		HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
 
-		HAL_UART_Transmit(&huart2, (uint8_t *)"=================\n\r", sizeof("=================\n\r"), 0xFFFF);
+		HAL_UART_Transmit(&huart2, (uint8_t *)"===========MPU Filters===========\n\r", sizeof("===========MPU Filters===========\n\r"), 0xFFFF);
 
 		size = snprintf(buffer, 64, "Kalman: X: %0.4f\tY: %0.4f\n\r", kalman_x.angle, kalman_y.angle);
 		HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
@@ -239,11 +250,11 @@ int main(void)
 		  /* acce = (speed_now - speed_before) / time */
 		/* Read linear acceleration via IMU */
 		  /* This requires hefty math */
-		/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-		/* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 	}
-	/* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -317,13 +328,19 @@ void SystemClock_Config(void)
  */
 void compute_dynamic_tilt()
 {
-	/* Compute dynamic tilt angle via IMU */
+	/* Compute dynamic tilt angle via MPU6050 IMU */
 	MPU6050_Read_All(&hi2c1, &mpu_dev);
 	MPU6050_Compute_Angles(&mpu_dev, dt_s);
 	compute_kalman_angles(dt_s);
 	compute_alpha_beta_angles(dt_s);
 	compute_complementary_angles();
 	compute_ab_comp_angles();
+
+	/* Compute dynamic tilt angle via LSM303C and L3GD20 IMUs */
+	read_xyz_values_lsm303c(&(lsm_dev.xyz_raw));
+	read_xyz_values_l3gd20(&(l3g_dev.xyz_raws));
+	lsm303c_compute_angles(&lsm_dev);
+	l3gd20_compute_angles(&l3g_dev, dt_s);
 }
 
 /** Computes the angle of the device using a Kalman Filter.
@@ -407,12 +424,14 @@ void compute_ab_comp_angles()
 void zero_out_angles()
 {
 	char buffer[64] = { 0 };
-	double error_temps[5] = { 0 };
+	double error_temps[10] = { 0 };
 	size_t size;
 
 	for (int i = 0; i < 50; i++)
 	{
 		MPU6050_Read_All(&hi2c1, &mpu_dev);
+		read_xyz_values_lsm303c(&(lsm_dev.xyz_raw));
+		read_xyz_values_l3gd20(&(l3g_dev.xyz_raws));
 
 		HAL_Delay(dt_ms);
 	}
@@ -429,6 +448,18 @@ void zero_out_angles()
 		error_temps[3] += mpu_dev.Gy;
 		error_temps[4] += mpu_dev.Gz;
 
+		read_xyz_values_lsm303c(&(lsm_dev.xyz_raw));
+		read_xyz_values_l3gd20(&(l3g_dev.xyz_raws));
+		lsm303c_compute_angles(&lsm_dev);
+		l3gd20_compute_angles(&l3g_dev, dt_s);
+
+		error_temps[5] += lsm_dev.acc_x;
+		error_temps[6] += lsm_dev.acc_y;
+
+		error_temps[7] += l3g_dev.xyz_raws.x;
+		error_temps[8] += l3g_dev.xyz_raws.y;
+		error_temps[9] += l3g_dev.xyz_raws.z;
+
 		HAL_Delay(dt_ms);
 	}
 
@@ -439,9 +470,25 @@ void zero_out_angles()
 	mpu_dev.GyroYError -= error_temps[3] / 50.0;
 	mpu_dev.GyroZError -= error_temps[4] / 50.0;
 
-	size = snprintf(buffer, 64, "Acc Zero: X: %0.4f\tY: %0.4f\n\r", mpu_dev.AccXError, mpu_dev.AccYError);
+	lsm_dev.acc_x_error -= error_temps[5] / 50.0;
+	lsm_dev.acc_y_error -= error_temps[6] / 50.0;
+
+	l3g_dev.gyro_x_error -= error_temps[7] / 50.0;
+	l3g_dev.gyro_y_error -= error_temps[8] / 50.0;
+	l3g_dev.gyro_z_error -= error_temps[9] / 50.0;
+
+	HAL_UART_Transmit(&huart2, (uint8_t *)"===========MPU Raw===========\n\r", sizeof("===========MPU Raw===========\n\r"), 0xFFFF);
+
+	size = snprintf(buffer, 64, "Acce Zero: X: %0.4f\tY: %0.4f\n\r", mpu_dev.AccXError, mpu_dev.AccYError);
 	HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
 	size = snprintf(buffer, 64, "Gyro Zero: X: %0.4f\tY: %0.4f\tZ: %0.4f\n\r", mpu_dev.GyroXError, mpu_dev.GyroYError, mpu_dev.GyroZError);
+	HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+
+	HAL_UART_Transmit(&huart2, (uint8_t *)"===========Built-in Raw===========\n\r", sizeof("===========Built-in Raw===========\n\r"), 0xFFFF);
+
+	size = snprintf(buffer, 64, "Acce Zero: X: %0.4f\tY: %0.4f\n\r", lsm_dev.acc_x_error, lsm_dev.acc_y_error);
+	HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
+	size = snprintf(buffer, 64, "Gyro Zero: X: %0.4f\tY: %0.4f\tZ: %0.4f\n\r", l3g_dev.gyro_x_error, l3g_dev.gyro_y_error, l3g_dev.gyro_z_error);
 	HAL_UART_Transmit(&huart2, (uint8_t *)buffer, size, 0xFFFF);
 }
 

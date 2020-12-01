@@ -82,12 +82,19 @@ IMPLEMENT_READ_XYZ_VALUES(l3gd20)
 	l3gd20_read((uint8_t*)(&y), L3GD20_OUT_Y_L_ADDR, 2);
 	l3gd20_read((uint8_t*)(&z), L3GD20_OUT_Z_L_ADDR, 2);
 
-	x = x * L3GD20_250DPS_SENSITIVITY;
-	y = y * L3GD20_250DPS_SENSITIVITY;
-	z = z * L3GD20_250DPS_SENSITIVITY;
-
-	inout_xyz_axis->x = x;
-	inout_xyz_axis->y = y;
-	inout_xyz_axis->z = z;
+	/* Cast back into double for scaling */
+	inout_xyz_axis->x = (double)x * L3GD20_250DPS_SENSITIVITY;
+	inout_xyz_axis->y = (double)y * L3GD20_250DPS_SENSITIVITY;
+	inout_xyz_axis->z = (double)z * L3GD20_250DPS_SENSITIVITY;
 }
 
+void l3gd20_compute_angles(l3gd20_t* data, double dt)
+{
+	data->xyz_raws.x += data->gyro_x_error;
+	data->xyz_raws.y += data->gyro_y_error;
+	data->xyz_raws.z += data->gyro_z_error;
+
+	data->gyro_x += data->xyz_raws.x * dt;
+	data->gyro_y += data->xyz_raws.y * dt;
+	data->gyro_z += data->xyz_raws.z * dt;
+}

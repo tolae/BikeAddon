@@ -76,9 +76,22 @@
 /* LSM303C Magnometer Register Addresses */
 #define LSM303_WHO_AM_I_M_ADDR			0x0F
 
+typedef struct
+{
+	xyz_axis_t xyz_raw;
+
+	double acc_x;
+	double acc_y;
+
+	double acc_x_error;
+	double acc_y_error;
+} lsm303c_t;
+
 void lsm303c_init(SPI_HandleTypeDef* spix);
 void lsm303c_write(uint8_t* in_buffer, uint8_t addr, uint8_t size);
 void lsm303c_read(uint8_t* out_buffer, uint8_t addr, uint8_t size);
+
+void lsm303c_compute_angles(lsm303c_t* data);
 
 IMPLEMENT_READ_XYZ_VALUES(lsm303c);
 

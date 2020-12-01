@@ -41,9 +41,26 @@
 #define L3GD20_500DPS_SENSITVITY	0.01750f
 #define L3GD20_2000DPS_SENSITVITY	0.070f
 
+typedef struct
+{
+	/* Holds the raw values from this sensor. */
+	xyz_axis_t xyz_raws;
+
+	/* The computed angles in degrees */
+	double gyro_x;
+	double gyro_y;
+	double gyro_z;
+
+	double gyro_x_error;
+	double gyro_y_error;
+	double gyro_z_error;
+} l3gd20_t;
+
 void l3gd20_init(SPI_HandleTypeDef* spix);
 void l3gd20_write(uint8_t* in_buffer, uint8_t addr, uint8_t size);
 void l3gd20_read(uint8_t* out_buffer, uint8_t addr, uint8_t size);
+
+void l3gd20_compute_angles(l3gd20_t* data, double dt);
 
 IMPLEMENT_READ_XYZ_VALUES(l3gd20);
 

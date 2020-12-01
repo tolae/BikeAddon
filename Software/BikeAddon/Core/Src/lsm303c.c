@@ -1,4 +1,7 @@
+#include <math.h>
 #include "lsm303c.h"
+
+#define RAD_TO_DEG 57.295779513082320876798154814105
 
 typedef struct
 {
@@ -32,9 +35,9 @@ void lsm303c_init(SPI_HandleTypeDef* spix)
 	/* The following weirdness is required... */
 	lsm303c_read(&config, LSM303C_CTRL_REG4_A_ADDR, 1);
 	/* Enable R/W mode for accelerometer */
-	/* Enable full scale to 8g */
+	/* Enable full scale to 2g */
 	/* Disable I2C comms (using SPI) */
-	config = LSM303C_CTRL_REG4_A_DEFAULT | 0x33;
+	config = LSM303C_CTRL_REG4_A_DEFAULT | 0x03;
 	lsm303c_write(&config, LSM303C_CTRL_REG4_A_ADDR, 1);
 	/* Set ODR to 100 Hz Low Pass Filter */
 	config = LSM303C_CTRL_REG1_A_DEFAULT | 0x30;
@@ -83,11 +86,20 @@ IMPLEMENT_READ_XYZ_VALUES(lsm303c)
 	lsm303c_read((uint8_t*)(&(y)), LSM303C_OUT_Y_L_A_ADDR, 2);
 	lsm303c_read((uint8_t*)(&(z)), LSM303C_OUT_Z_L_A_ADDR, 2);
 
-	x = x * LSM303C_ACCEL_8G_SENSITIVITY;
-	y = y * LSM303C_ACCEL_8G_SENSITIVITY;
-	z = z * LSM303C_ACCEL_8G_SENSITIVITY;
+	/* Cast back into double for scaling */
+	inout_xyz_axis->x = (double)x * LSM303C_ACCEL_2G_SENSITIVITY;
+	inout_xyz_axis->y = (double)y * LSM303C_ACCEL_2G_SENSITIVITY;
+	inout_xyz_axis->z = (double)z * LSM303C_ACCEL_2G_SENSITIVITY;
+}
 
-	inout_xyz_axis->x = x;
-	inout_xyz_axis->y = y;
-	inout_xyz_axis->z = z;
+void lsm303c_compute_angles(lsm303c_t* data)
+{
+	double roll_sqrt = sqrt(
+			data->xyz_raw.x * data->xyz_raw.x + data->xyz_raw.z * data->xyz_raw.z);
+	if (roll_sqrt != 0.0) {
+		data->acc_x = atan(data->xyz_raw.y / roll_sqrt) * RAD_TO_DEG + data->acc_x_error;
+	} else {
+		data->acc_x = 0.0;
+	}
+	data->acc_y = atan2(-data->xyz_raw.x, data->xyz_raw.z) * RAD_TO_DEG + data->acc_y_error;
 }
